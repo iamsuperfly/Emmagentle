@@ -14,7 +14,6 @@ pnpm-debug.log*
 
 # Replit-only scaffolding is not part of the GitHub application.
 artifacts/
-lib/
 scripts/
 .cache/
 .agents/
