@@ -134,11 +134,6 @@ button:hover,
   color: var(--orange);
 }
 
-.nav-admin-link {
-  border-left: 1px solid #525651;
-  padding-left: 1.1rem;
-}
-
 .site-footer {
   margin-top: 5rem;
   padding: 3rem 0;
@@ -594,10 +589,6 @@ label {
 
   .main-nav {
     gap: 0.7rem;
-  }
-
-  .nav-admin-link {
-    padding-left: 0.7rem;
   }
 
   .footer-grid,
