@@ -60,7 +60,20 @@ export async function getProducts(options?: {
   if (search) {
     const { data, error } = await supabase.rpc("search_products" as never, { search_term: search } as never);
     if (error) throw new Error(error.message);
-    return (data ?? []) as Product[];
+    const searchMatches = (data ?? []) as Array<{ id: string }>;
+    if (!searchMatches.length) return [];
+
+    const { data: hydratedData, error: hydrationError } = await supabase
+      .from("products")
+      .select(productSelect)
+      .in("id", searchMatches.map((product) => product.id));
+    if (hydrationError) throw new Error(hydrationError.message);
+
+    const hydratedProducts = (hydratedData ?? []) as Product[];
+    const productsById = new Map(hydratedProducts.map((product) => [product.id, product]));
+    return searchMatches
+      .map((product) => productsById.get(product.id))
+      .filter((product): product is Product => Boolean(product));
   }
 
   if (options?.categorySlug) {

@@ -26,9 +26,15 @@ export default async function ProductsPage({
           <h1>{search ? `Search results for “${search}”` : "Products"}</h1>
           <p>Search the live catalogue by product name, description, or category.</p>
         </div>
-        <form className="search-bar" action="/products">
+        <form className="search-bar" action="/products" role="search">
           <input name="q" defaultValue={search} placeholder="Try bulb, solar, socket, 50w…" aria-label="Search products" />
-          <button className="button button-primary" type="submit">Search</button>
+          <button className="button button-primary" type="submit">
+            <svg className="button-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />
+              <path d="m16 16 4 4" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
+            </svg>
+            Search
+          </button>
           {search ? <Link className="button button-secondary" href="/products">Clear</Link> : null}
         </form>
         {categories.length ? (

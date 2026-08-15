@@ -20,7 +20,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
           <p className="eyebrow">Category</p>
           <h1>{category.name}</h1>
           <p>{category.description || "Products assigned to this category."}</p>
-          <Link className="button button-secondary" href="/categories">All categories</Link>
+          <Link className="button button-secondary" href="/categories">← Back to categories</Link>
         </div>
         {products.length ? (
           <div className="product-grid">

@@ -45,7 +45,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           <a className="button button-primary" href={whatsappHref(product.name, settings.whatsapp_number)} target="_blank" rel="noreferrer">
             Ask about this product on WhatsApp
           </a>
-          <Link className="button button-secondary" href="/products">Back to products</Link>
+          <Link className="button button-secondary" href="/products">← Back to products</Link>
         </div>
       </div>
     </section>
