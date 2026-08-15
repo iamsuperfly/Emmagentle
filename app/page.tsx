@@ -1,6 +1,5 @@
 import Link from "next/link";
-import { EmptyState } from "@/components/EmptyState";
-import { ProductCard } from "@/components/ProductCard";
+import { StorefrontProductSections } from "@/components/StorefrontProductSections";
 import { getBusinessSettings, getCategories, getProducts } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -12,13 +11,6 @@ export default async function HomePage() {
     getProducts({ featured: true }),
     getProducts(),
   ]);
-  const featuredGroups = categories
-    .map((category) => ({
-      category,
-      products: featuredProducts.filter((product) => product.category_id === category.id),
-    }))
-    .filter((group) => group.products.length > 0);
-
   return (
     <>
       <section className="hero">
@@ -53,70 +45,12 @@ export default async function HomePage() {
           <p>{categories.length} dynamic categories</p>
         </div>
       </div>
-      <section className="section">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Featured products</p>
-              <h2>Featured Products</h2>
-            </div>
-            <Link className="button button-secondary" href="/products">
-              See all products
-            </Link>
-          </div>
-          {featuredGroups.length ? (
-            <div className="featured-product-groups">
-              {featuredGroups.map(({ category, products }) => (
-                <div className="featured-product-group" key={category.id}>
-                  <div className="category-row-heading">
-                    <h3>{category.name}</h3>
-                    <Link href={`/categories/${category.slug}`}>View category →</Link>
-                  </div>
-                  <div className="featured-product-row" aria-label={`${category.name} featured products`}>
-                    {products.map((product) => (
-                      <ProductCard
-                        key={product.id}
-                        product={product}
-                        whatsappNumber={settings.whatsapp_number}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <EmptyState
-              title="No featured products yet"
-              message="Use the admin dashboard to add products and mark the ones you want visitors to see here."
-            />
-          )}
-        </div>
-      </section>
-      <section className="section all-products-section">
-        <div className="shell">
-          <div className="section-heading">
-            <div>
-              <p className="eyebrow">Browse the catalogue</p>
-              <h2>All Products</h2>
-            </div>
-            <Link className="button button-secondary" href="/products">
-              View full catalogue
-            </Link>
-          </div>
-          {allProducts.length ? (
-            <div className="product-grid">
-              {allProducts.map((product) => (
-                <ProductCard key={product.id} product={product} whatsappNumber={settings.whatsapp_number} />
-              ))}
-            </div>
-          ) : (
-            <EmptyState
-              title="No products yet"
-              message="An administrator can add the first product from the dashboard."
-            />
-          )}
-        </div>
-      </section>
+      <StorefrontProductSections
+        allProducts={allProducts}
+        categories={categories}
+        featuredProducts={featuredProducts}
+        whatsappNumber={settings.whatsapp_number}
+      />
     </>
   );
 }

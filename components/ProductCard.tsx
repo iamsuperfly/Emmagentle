@@ -9,7 +9,15 @@ function statusLabel(status: Product["stock_status"]) {
   return "Available";
 }
 
-export function ProductCard({ product, whatsappNumber }: { product: Product; whatsappNumber?: string }) {
+export function ProductCard({
+  compactOnMobile = false,
+  product,
+  whatsappNumber,
+}: {
+  compactOnMobile?: boolean;
+  product: Product;
+  whatsappNumber?: string;
+}) {
   const image = product.product_images?.sort((a, b) => a.sort_order - b.sort_order)[0];
   const imageUrl = image ? getPublicImageUrl(image.storage_path) : null;
   const statusClass = product.stock_status === "out_of_stock"
@@ -19,7 +27,7 @@ export function ProductCard({ product, whatsappNumber }: { product: Product; wha
       : "status";
 
   return (
-    <article className="product-card">
+    <article className={`product-card${compactOnMobile ? " product-card-compact-mobile" : ""}`}>
       <Link className="product-image" href={`/products/${product.slug}`}>
         {imageUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
