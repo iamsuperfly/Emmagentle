@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getBusinessSettings } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -14,6 +15,9 @@ export default async function AboutPage() {
             This page is intentionally simple during the foundation stage. The details below are
             controlled from Business Settings so the final design can grow without moving business data.
           </p>
+          <Link className="button button-secondary" href="/">
+            ← Back to home
+          </Link>
         </div>
         <div className="info-strip" style={{ marginTop: "1.5rem" }}>
           <div>
