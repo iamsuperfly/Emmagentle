@@ -1016,7 +1016,7 @@ label {
   }
 
   .product-card-compact-mobile .product-card-body > .eyebrow,
-  .product-card-compact-mobile .product-card-body > p,
+  .product-card-compact-mobile .product-card-body > p:not(.product-price),
   .product-card-compact-mobile .product-card-body > .status,
   .product-card-compact-mobile .product-card-body > .button-row {
     display: none;
