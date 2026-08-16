@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { formatNaira } from "@/lib/currency";
 import { getBusinessSettings, getProductBySlug } from "@/lib/data";
 import { getPublicImageUrl } from "@/lib/images";
 import { Product } from "@/lib/types";
@@ -39,6 +40,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <div className="detail-copy">
         <p className="eyebrow">{product.categories?.name || "Electrical & hardware"}</p>
         <h1>{product.name}</h1>
+        <p className="product-price product-price-detail">{formatNaira(product.price)}</p>
         <span className={statusClass}>{statusLabel(product.stock_status)}</span>
         <p className="description">{product.description || "Product details will be added soon."}</p>
         <div className="button-row">
