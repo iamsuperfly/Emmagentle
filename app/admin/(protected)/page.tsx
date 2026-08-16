@@ -36,7 +36,7 @@ export default async function AdminDashboardPage() {
           </Link>
         ))}
       </div>
-      <div className="panel" style={{ marginTop: "1rem" }}>
+      <div className="panel foundation-checklist">
         <p className="eyebrow">Foundation checklist</p>
         <h2>Ready for content entry</h2>
         <p>

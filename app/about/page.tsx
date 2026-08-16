@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BUSINESS_DEFAULTS } from "@/lib/config";
 import { getBusinessSettings } from "@/lib/data";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function AboutPage() {
               target="_blank"
               rel="noreferrer"
             >
+              <WhatsAppIcon />
               WhatsApp
             </a>
           </div>

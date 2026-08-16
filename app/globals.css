@@ -59,6 +59,18 @@ button,
   flex: 0 0 auto;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 button:hover,
 .button:hover {
   transform: translateY(-1px);
@@ -495,6 +507,18 @@ button:hover,
   font-size: 0.86rem;
 }
 
+.whatsapp-button-compact {
+  width: 2.5rem;
+  min-width: 2.5rem;
+  padding: 0.58rem;
+  gap: 0;
+}
+
+.whatsapp-button-compact .button-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .product-card .button-row {
   margin-top: auto;
   padding-top: 0.8rem;
@@ -763,6 +787,10 @@ label {
   margin-top: 1rem;
 }
 
+.foundation-checklist {
+  margin-top: 1rem;
+}
+
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -894,6 +922,23 @@ label {
 
   .admin-layout {
     gap: 1.25rem;
+  }
+
+  .foundation-checklist {
+    margin-top: 0.8rem;
+    padding: 0.85rem 1rem;
+  }
+
+  .foundation-checklist h2 {
+    margin: 0.2rem 0 0.35rem;
+    font-size: 1.25rem;
+    line-height: 1.1;
+  }
+
+  .foundation-checklist > p:last-child {
+    margin: 0;
+    font-size: 0.84rem;
+    line-height: 1.4;
   }
 
   .info-strip > div {
@@ -1179,6 +1224,12 @@ label {
     width: 100%;
     padding: 0.65rem 0.7rem;
     font-size: 0.9rem;
+  }
+
+  .product-card .button-row .whatsapp-button-compact {
+    width: 2.5rem;
+    min-width: 2.5rem;
+    padding: 0.58rem;
   }
 
   .featured-product-groups {
