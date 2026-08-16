@@ -5,6 +5,7 @@ import { getBusinessSettings, getProductBySlug } from "@/lib/data";
 import { getPublicImageUrl } from "@/lib/images";
 import { Product } from "@/lib/types";
 import { whatsappHref } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +55,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             rel="noreferrer"
             aria-label={`Ask about ${product.name} on WhatsApp`}
           >
+            <WhatsAppIcon />
             WhatsApp
           </a>
           <Link className="button button-secondary" href="/products">← Back to products</Link>

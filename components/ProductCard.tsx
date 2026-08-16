@@ -3,6 +3,7 @@ import { formatNaira } from "@/lib/currency";
 import { getPublicImageUrl } from "@/lib/images";
 import { Product } from "@/lib/types";
 import { whatsappHref } from "@/lib/whatsapp";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 function statusLabel(status: Product["stock_status"]) {
   if (status === "out_of_stock") return "Out of stock";
@@ -52,13 +53,15 @@ export function ProductCard({
             Details
           </Link>
           <a
-            className="button button-primary whatsapp-button"
+            className="button button-primary whatsapp-button whatsapp-button-compact"
             href={whatsappHref(product.name, whatsappNumber)}
             target="_blank"
             rel="noreferrer"
             aria-label={`Ask about ${product.name} on WhatsApp`}
+            title="Ask about this product on WhatsApp"
           >
-            WhatsApp
+            <WhatsAppIcon />
+            <span className="sr-only">WhatsApp</span>
           </a>
         </div>
       </div>
