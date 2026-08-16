@@ -40,12 +40,21 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <div className="detail-copy">
         <p className="eyebrow">{product.categories?.name || "Electrical & hardware"}</p>
         <h1>{product.name}</h1>
-        <p className="product-price product-price-detail">{formatNaira(product.price)}</p>
+        <p className={`product-price product-price-detail${product.price === null ? " product-price-unavailable" : ""}`}>
+          {formatNaira(product.price)}
+        </p>
+        <p className="price-note">Prices may change without prior notice.</p>
         <span className={statusClass}>{statusLabel(product.stock_status)}</span>
         <p className="description">{product.description || "Product details will be added soon."}</p>
         <div className="button-row">
-          <a className="button button-primary" href={whatsappHref(product.name, settings.whatsapp_number)} target="_blank" rel="noreferrer">
-            Ask about this product on WhatsApp
+          <a
+            className="button button-primary whatsapp-button"
+            href={whatsappHref(product.name, settings.whatsapp_number)}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Ask about ${product.name} on WhatsApp`}
+          >
+            WhatsApp
           </a>
           <Link className="button button-secondary" href="/products">← Back to products</Link>
         </div>

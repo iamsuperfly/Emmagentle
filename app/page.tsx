@@ -18,7 +18,7 @@ export default async function HomePage() {
           <p className="eyebrow">Electrical & hardware supplies</p>
           <h1>Practical products for the work in front of you.</h1>
           <p>
-            Browse Emmanuel Enterprise products and contact us directly when you need to confirm
+            Browse EMMA GENTLE products and contact us directly when you need to confirm
             availability or ask a question.
           </p>
           <div className="hero-actions">
