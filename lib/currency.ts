@@ -1,5 +1,5 @@
 export function formatNaira(value: number | null) {
-  if (value === null || !Number.isFinite(value)) return "Price on request";
+  if (value === null || !Number.isFinite(value)) return "Price not listed";
 
   return `₦${new Intl.NumberFormat("en-NG", {
     maximumFractionDigits: 2,

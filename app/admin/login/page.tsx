@@ -1,4 +1,5 @@
 import { LoginForm } from "@/components/auth/LoginForm";
+import { BUSINESS_DEFAULTS } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 
@@ -15,7 +16,7 @@ export default async function AdminLoginPage({
   return (
     <section className="auth-shell">
       <div className="auth-card">
-        <p className="eyebrow">Emmanuel Enterprise</p>
+        <p className="eyebrow">{BUSINESS_DEFAULTS.businessName}</p>
         <h1>Admin sign in</h1>
         <p>Manage the catalogue, categories, images, and business information.</p>
         <LoginForm message={message} />

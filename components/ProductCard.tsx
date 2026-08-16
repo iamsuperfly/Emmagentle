@@ -42,15 +42,23 @@ export function ProductCard({
         <h3>
           <Link href={`/products/${product.slug}`}>{product.name}</Link>
         </h3>
-        <p className="product-price">{formatNaira(product.price)}</p>
+        <p className={`product-price${product.price === null ? " product-price-unavailable" : ""}`}>
+          {formatNaira(product.price)}
+        </p>
         <p>{product.description || "Product details will be added soon."}</p>
         <span className={statusClass}>{statusLabel(product.stock_status)}</span>
         <div className="button-row">
           <Link className="button button-secondary" href={`/products/${product.slug}`}>
             Details
           </Link>
-          <a className="button button-primary" href={whatsappHref(product.name, whatsappNumber)} target="_blank" rel="noreferrer">
-            Enquire
+          <a
+            className="button button-primary whatsapp-button"
+            href={whatsappHref(product.name, whatsappNumber)}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Ask about ${product.name} on WhatsApp`}
+          >
+            WhatsApp
           </a>
         </div>
       </div>

@@ -115,6 +115,16 @@ button:hover,
   font-weight: 800;
 }
 
+.brand-logo {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  padding: 0.2rem;
+  border-radius: 4px;
+  object-fit: contain;
+  background: #fff;
+}
+
 .brand-mark {
   display: grid;
   place-items: center;
@@ -138,6 +148,68 @@ button:hover,
 .main-nav a:hover,
 .main-nav a:focus-visible {
   color: var(--orange);
+}
+
+.mobile-menu {
+  display: none;
+  position: relative;
+}
+
+.mobile-menu summary {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+  list-style: none;
+}
+
+.mobile-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-menu summary::before {
+  content: "☰";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mobile-menu[open] summary::before {
+  content: "×";
+  font-size: 1.2rem;
+}
+
+.mobile-menu-panel {
+  display: grid;
+  min-width: 11rem;
+  gap: 0.15rem;
+  padding: 0.5rem;
+  border: 1px solid var(--line);
+  color: var(--charcoal);
+  background: var(--paper);
+  box-shadow: 0 8px 18px rgb(32 35 34 / 12%);
+}
+
+.mobile-menu-panel a,
+.mobile-menu-panel .button-link {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 0.7rem;
+  text-align: left;
+}
+
+.mobile-menu-panel a:hover,
+.mobile-menu-panel a:focus-visible,
+.mobile-menu-panel .button-link:hover,
+.mobile-menu-panel .button-link:focus-visible {
+  color: var(--orange-dark);
+  background: #ebe7df;
 }
 
 .site-footer {
@@ -400,9 +472,27 @@ button:hover,
   font-size: 1rem;
 }
 
+.product-price-unavailable {
+  color: var(--muted) !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+}
+
 .product-price-detail {
   margin: 0 0 0.75rem;
   font-size: 1.2rem;
+}
+
+.price-note {
+  margin: -0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.whatsapp-button {
+  min-height: 2.5rem;
+  padding: 0.58rem 0.8rem;
+  font-size: 0.86rem;
 }
 
 .product-card .button-row {
@@ -444,6 +534,29 @@ button:hover,
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-panel {
+  min-height: 100%;
+}
+
+.about-panel h2 {
+  margin: 0.35rem 0 0.6rem;
+  font-size: 1.35rem;
+}
+
+.about-panel > p:not(.eyebrow) {
+  color: var(--muted);
+}
+
+.about-panel .button {
+  margin-top: 0.6rem;
 }
 
 .category-card {
@@ -717,15 +830,36 @@ label {
 
 @media (max-width: 800px) {
   .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
     gap: 0.65rem;
     padding: 0.75rem 0;
   }
 
+  .brand {
+    min-width: 0;
+  }
+
+  .brand span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   .main-nav {
-    gap: 0.55rem 0.85rem;
-    font-size: 0.85rem;
+    display: none;
+  }
+
+  .public-mobile-menu {
+    display: block;
+    margin-left: auto;
+  }
+
+  .public-mobile-menu .mobile-menu-panel {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    z-index: 5;
   }
 
   .footer-grid,
@@ -737,19 +871,16 @@ label {
   }
 
   .admin-sidebar {
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-    padding: 0.75rem;
-    border: 1px solid var(--line);
-    background: var(--paper);
+    display: none;
   }
 
-  .admin-sidebar a {
-    padding: 0.55rem 0.65rem;
-    background: #ebe7df;
-    font-size: 0.88rem;
+  .admin-mobile-menu {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .admin-mobile-menu .mobile-menu-panel {
+    margin-top: 0.5rem;
   }
 
   .data-table {
@@ -824,17 +955,13 @@ label {
     font-size: 0.95rem;
   }
 
-  .brand-mark {
+  .brand-logo {
     width: 34px;
     height: 34px;
-    font-size: 0.72rem;
   }
 
   .main-nav {
-    gap: 0.5rem 0.75rem;
-    font-size: 0.82rem;
-    justify-content: space-between;
-    width: 100%;
+    display: none;
   }
 
   .hero {
@@ -966,6 +1093,11 @@ label {
   .admin-main .table-actions .button,
   .admin-main .table-actions button {
     min-height: 2.25rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .search-bar {
