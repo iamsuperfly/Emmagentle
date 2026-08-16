@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { formatNaira } from "@/lib/currency";
 import { getPublicImageUrl } from "@/lib/images";
 import { Product } from "@/lib/types";
 import { whatsappHref } from "@/lib/whatsapp";
@@ -41,6 +42,7 @@ export function ProductCard({
         <h3>
           <Link href={`/products/${product.slug}`}>{product.name}</Link>
         </h3>
+        <p className="product-price">{formatNaira(product.price)}</p>
         <p>{product.description || "Product details will be added soon."}</p>
         <span className={statusClass}>{statusLabel(product.stock_status)}</span>
         <div className="button-row">

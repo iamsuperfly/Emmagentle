@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { deleteProduct } from "@/app/admin/actions";
+import { formatNaira } from "@/lib/currency";
 import { requireAdmin } from "@/lib/auth";
 import { getProducts } from "@/lib/data";
 
@@ -42,7 +43,7 @@ export default async function AdminProductsPage({
                   <td>
                     <strong>{product.name}</strong>
                     <br />
-                    <small>{product.price ? product.price.toLocaleString() : "Price on request"}</small>
+                    <small>{formatNaira(product.price)}</small>
                   </td>
                   <td>{product.categories?.name || "Uncategorised"}</td>
                   <td>{product.stock_status === "in_stock" ? "Available" : product.stock_status === "out_of_stock" ? "Out of stock" : "Confirm availability"}</td>
