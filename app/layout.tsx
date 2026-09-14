@@ -3,6 +3,7 @@ import { MobileMenu } from "@/components/MobileMenu";
 import { BUSINESS_DEFAULTS, PUBLIC_LOGO_PATH } from "@/lib/config";
 import { getBusinessSettings } from "@/lib/data";
 import "./globals.css";
+import "./trade.css";
 
 export const metadata = {
   title: "EMMA GENTLE | Electrical & Hardware Supplies",
