@@ -17,10 +17,10 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     <section className="section">
       <div className="shell">
         <div className="page-heading">
-          <p className="eyebrow">Category</p>
+          <p className="eyebrow">Aisle</p>
           <h1>{category.name}</h1>
-          <p>{category.description || "Products assigned to this category."}</p>
-          <Link className="button button-secondary" href="/categories">← Back to categories</Link>
+          <p>{category.description || "Items currently listed in this group."}</p>
+          <Link className="button button-secondary" href="/categories">All categories</Link>
         </div>
         {products.length ? (
           <div className="product-grid">

@@ -11,8 +11,8 @@ export const dynamic = "force-dynamic";
 
 function statusLabel(status: Product["stock_status"]) {
   if (status === "out_of_stock") return "Out of stock";
-  if (status === "on_request") return "Confirm availability";
-  return "Available";
+  if (status === "on_request") return "Ask first";
+  return "In stock";
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -35,18 +35,18 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           // eslint-disable-next-line @next/next/no-img-element
           <img src={imageUrl} alt={image?.alt_text || product.name} />
         ) : (
-          <span className="placeholder-image">Product image to be added</span>
+          <span className="placeholder-image">No photo yet</span>
         )}
       </div>
       <div className="detail-copy">
-        <p className="eyebrow">{product.categories?.name || "Electrical & hardware"}</p>
+        <p className="eyebrow">{product.categories?.name || "Uncategorised"}</p>
         <h1>{product.name}</h1>
         <p className={`product-price product-price-detail${product.price === null ? " product-price-unavailable" : ""}`}>
           {formatNaira(product.price)}
         </p>
-        <p className="price-note">Prices may change without prior notice.</p>
+        <p className="price-note">Ask on WhatsApp before you travel. Prices move with supply.</p>
         <span className={statusClass}>{statusLabel(product.stock_status)}</span>
-        <p className="description">{product.description || "Product details will be added soon."}</p>
+        <p className="description">{product.description || "Ask the shop for the current spec and pack size."}</p>
         <div className="button-row">
           <a
             className="button button-primary whatsapp-button"
@@ -56,9 +56,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             aria-label={`Ask about ${product.name} on WhatsApp`}
           >
             <WhatsAppIcon />
-            WhatsApp
+            Ask on WhatsApp
           </a>
-          <Link className="button button-secondary" href="/products">← Back to products</Link>
+          <Link className="button button-secondary" href="/products">Back to catalogue</Link>
         </div>
       </div>
     </section>
