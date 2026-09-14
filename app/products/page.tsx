@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { EmptyState } from "@/components/EmptyState";
 import { ProductCard } from "@/components/ProductCard";
+import { IconSearch } from "@/components/icons";
 import { getBusinessSettings, getCategories, getProducts } from "@/lib/data";
 
 export const dynamic = "force-dynamic";
@@ -22,24 +23,21 @@ export default async function ProductsPage({
     <section className="section">
       <div className="shell">
         <div className="page-heading">
-          <p className="eyebrow">Live stock list</p>
-          <h1>{search ? `Results for “${search}”` : "Catalogue"}</h1>
-          <p>Search by name, description, or category. Confirm the price on WhatsApp before you travel.</p>
+          <p className="eyebrow">Product catalogue</p>
+          <h1>{search ? `Search results for “${search}”` : "Products"}</h1>
+          <p>Search the live catalogue by product name, description, or category.</p>
         </div>
         <form className="search-bar" action="/products" role="search">
-          <input name="q" defaultValue={search} placeholder="Bulb, solar, socket, cable…" aria-label="Search products" />
+          <input name="q" defaultValue={search} placeholder="Try bulb, solar, socket, 50w…" aria-label="Search products" />
           <button className="button button-primary" type="submit">
-            <svg className="button-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />
-              <path d="m16 16 4 4" fill="none" stroke="currentColor" strokeLinecap="round" strokeWidth="2" />
-            </svg>
+            <IconSearch />
             Search
           </button>
           {search ? <Link className="button button-secondary" href="/products">Clear</Link> : null}
         </form>
         {categories.length ? (
           <div className="button-row category-chip-row">
-            <span className="eyebrow">Aisles</span>
+            <span className="eyebrow">Categories</span>
             {categories.map((category) => (
               <Link className="button button-secondary" key={category.id} href={`/categories/${category.slug}`}>
                 {category.name}
@@ -55,11 +53,11 @@ export default async function ProductsPage({
           </div>
         ) : (
           <EmptyState
-            title={search ? "Nothing matched that search" : "No stock listed yet"}
+            title={search ? "No matching products" : "The catalogue is empty"}
             message={
               search
-                ? "Try a shorter word, or open a category."
-                : "Items added in the admin dashboard will show here."
+                ? "Try a broader search term or browse a category."
+                : "Products added by an administrator will appear here."
             }
           />
         )}

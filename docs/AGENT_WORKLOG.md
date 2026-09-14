@@ -1,50 +1,51 @@
 # Emma Gentle visual pass — work log
 
 ## Summary
-Public catalogue now reads as a trade counter: cooler workshop ground, safety-orange rules on header/footer, smaller shop-sign type, denser four-column stock cards with flush photos and stock badges on the image. Wordmark sits beside a separate logo tile. WhatsApp is in the header, hero, product cards, and footer. Public copy dropped “dynamic categories” and landing-page slogans. Admin chrome stayed square and operational.
+Follow-up on the merged trade restyle. Restored the official hero line “Practical products for the work in front of you.” Added Lucide-path icons for hours, location, WhatsApp, and search. Raised tap targets to 44px. Made catalogue WhatsApp labels visible. Stopped horizontal overflow on small screens. Did not touch product rows or prices.
 
 ## Architecture check
-These were NOT changed: Next.js App Router, Supabase schema/RLS/auth/storage, admin CRUD behavior, search/category/WhatsApp URL generation, env contract, deploy setup.
+Unchanged: App Router, Supabase schema/RLS/auth/storage, admin CRUD, search/categories/WhatsApp builders, env, deploy.
+Inventory rows were not deleted or repriced.
 
-Left untouched on purpose:
-- `lib/data.ts`, `lib/supabase/*`, `supabase/*`
-- `app/admin/actions.ts`, admin form components
-- `middleware.ts`, `next.config.ts`, `package.json`
-- `lib/whatsapp.ts`
-- existing logo file
-- original `app/globals.css` class map (overrides in `app/trade.css`)
+## Skills used
+| Skill / source | URL | How applied |
+|---|---|---|
+| Taste Skill | https://github.com/Leonxlnx/taste-skill | Shop, not SaaS landing |
+| Impeccable | https://github.com/pbakaus/impeccable | Contrast / type checklist |
+| Emil Kowalski | https://github.com/emilkowalski/skill | Almost no motion |
+| DESIGN.md spec | https://github.com/google-labs-code/design.md | Hardware-store DESIGN.md |
+| Lucide | https://lucide.dev/icons | Clock, map pin, message, search |
+| Aura / React Bits | — | none |
 
-## Repos
-| Name | Action | URL | SHA |
-|---|---|---|---|
-| Emmagentle | branch + PR | https://github.com/iamsuperfly/Emmagentle/tree/design/emma-gentle-visual-pass | visual-pass branch |
-| taste-skill | clone | https://github.com/Leonxlnx/taste-skill | `ccbc15639c97057cbfcf32ecebc38ef716e4bb37` |
-| impeccable | clone | https://github.com/pbakaus/impeccable | `cb56ed6c19a07329a9fa0cd4e657bee040156593` |
-| emilkowalski/skill | clone | https://github.com/emilkowalski/skill | `d23d7f88a2e21c9e4b1418c7abe420f5c1052ba7` |
-| google-labs-code/design.md | clone | https://github.com/google-labs-code/design.md | `9bf8eae67128b6cc55ad9bf86665767deb4c11cd` |
-| emma-gentle-design-kit | created | https://github.com/iamsuperfly/emma-gentle-design-kit | `abff5f3de7851be8142a363b548d287eb153d6d3` |
+## Files changed
+`app/page.tsx`, `app/about/page.tsx`, `app/products/page.tsx`, `components/icons.tsx`, `components/ProductCard.tsx`, `app/trade.css`, DESIGN.md / PRODUCT.md (existing), this log.
 
-## Skills with no upstream repo
-`emma-gentle-ui` at `.grok/skills/emma-gentle-ui/SKILL.md`.
+## Aura / React Bits
+none on public pages.
 
-## Files changed in Emmagentle
-`app/trade.css`, `app/layout.tsx`, public pages, `components/ProductCard.tsx`, `components/StorefrontProductSections.tsx`, admin labels, design docs, design-kit copies.
+## Lucide
+Clock on hours, message on WhatsApp, map pin on location, search on catalogue form.
 
-## Skills applied
-Taste Skill, Impeccable checklist, Emil motion review, DESIGN.md spec, custom emma-gentle-ui.
-
-## Before / after
-- Home: https://emmagentle.vercel.app/
-- Catalogue: https://emmagentle.vercel.app/products
-- Product: https://emmagentle.vercel.app/products/mini-solar-panel-6v-8w
-- Contact: https://emmagentle.vercel.app/about
-After: Vercel preview on this branch.
+## Appearance notes — mobile vs desktop
+### Decisions
+One column under 800px. Four columns on wide catalogue. Header and card WhatsApp stay 44px with visible labels. Official hero line kept. Missing prices stay “Price not listed” via existing formatter.
+### Issues found
+| Page | Width | Problem | Fix |
+|---|---|---|
+| Home | 375 | Invented hero line after first pass | Restored official line |
+| Home | 375 | Featured row could scroll sideways | Force one-column grid |
+| Products | 375 | Search icon was ad-hoc SVG | Lucide search path |
+| Products | 375 | WhatsApp control was icon-only | Visible “WhatsApp” label |
+| Home / products | 1280 | Needed dense catalogue | Four-column overlay |
+### Screenshots
+Live before: https://emmagentle.vercel.app plus `/products`, `/categories/extras`, `/products/mini-solar-panel-6v-8w`, `/about`.
+After: Vercel preview on `design/emma-gentle-visual-pass-2`.
+Playwright was not added to the deploy pipeline.
+### Residual risk
+Owner test SKUs (pencil, laptop keyboard, HP 2018, missing prices) remain. Production still serves the last merged main until this PR is reviewed.
 
 ## Commands run
-Cloned Emmagentle and the listed skill repos. Run `npm run lint` and `npm run build` on Node 22.
-
-## Test results
-Sandbox Node is 24; project engines field is 22.x. Playwright was not added.
+Branched from latest `main`. Inventory SQL not run. File updates via GitHub API.
 
 ## Follow-ups
-No skill forks, no impeccable install, no Playwright dependency, no merge, no schema changes.
+Owner will delete test SKUs later. Not merged.

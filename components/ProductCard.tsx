@@ -53,15 +53,14 @@ export function ProductCard({
             Spec
           </Link>
           <a
-            className="button button-primary whatsapp-button whatsapp-button-compact"
+            className="button button-primary whatsapp-button"
             href={whatsappHref(product.name, whatsappNumber)}
             target="_blank"
             rel="noreferrer"
             aria-label={`Ask about ${product.name} on WhatsApp`}
-            title="Ask about this product on WhatsApp"
           >
             <WhatsAppIcon />
-            <span className="sr-only">WhatsApp</span>
+            WhatsApp
           </a>
         </div>
       </div>
