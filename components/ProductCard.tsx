@@ -7,8 +7,8 @@ import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 function statusLabel(status: Product["stock_status"]) {
   if (status === "out_of_stock") return "Out of stock";
-  if (status === "on_request") return "Confirm availability";
-  return "Available";
+  if (status === "on_request") return "Ask first";
+  return "In stock";
 }
 
 export function ProductCard({
@@ -35,22 +35,22 @@ export function ProductCard({
           // eslint-disable-next-line @next/next/no-img-element
           <img src={imageUrl} alt={image?.alt_text || product.name} />
         ) : (
-          <span className="placeholder-image">Product image to be added</span>
+          <span className="placeholder-image">No photo yet</span>
         )}
+        <span className={`${statusClass} status-on-photo`}>{statusLabel(product.stock_status)}</span>
       </Link>
       <div className="product-card-body">
-        <p className="eyebrow">{product.categories?.name || "Electrical & hardware"}</p>
+        <p className="eyebrow">{product.categories?.name || "Uncategorised"}</p>
         <h3>
           <Link href={`/products/${product.slug}`}>{product.name}</Link>
         </h3>
         <p className={`product-price${product.price === null ? " product-price-unavailable" : ""}`}>
           {formatNaira(product.price)}
         </p>
-        <p>{product.description || "Product details will be added soon."}</p>
-        <span className={statusClass}>{statusLabel(product.stock_status)}</span>
+        <p className="product-blurb">{product.description || "Ask the shop for the current spec."}</p>
         <div className="button-row">
           <Link className="button button-secondary" href={`/products/${product.slug}`}>
-            Details
+            Spec
           </Link>
           <a
             className="button button-primary whatsapp-button whatsapp-button-compact"

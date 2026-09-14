@@ -22,12 +22,12 @@ export default async function ProductsPage({
     <section className="section">
       <div className="shell">
         <div className="page-heading">
-          <p className="eyebrow">Product catalogue</p>
-          <h1>{search ? `Search results for “${search}”` : "Products"}</h1>
-          <p>Search the live catalogue by product name, description, or category.</p>
+          <p className="eyebrow">Live stock list</p>
+          <h1>{search ? `Results for “${search}”` : "Catalogue"}</h1>
+          <p>Search by name, description, or category. Confirm the price on WhatsApp before you travel.</p>
         </div>
         <form className="search-bar" action="/products" role="search">
-          <input name="q" defaultValue={search} placeholder="Try bulb, solar, socket, 50w…" aria-label="Search products" />
+          <input name="q" defaultValue={search} placeholder="Bulb, solar, socket, cable…" aria-label="Search products" />
           <button className="button button-primary" type="submit">
             <svg className="button-icon" viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -38,8 +38,8 @@ export default async function ProductsPage({
           {search ? <Link className="button button-secondary" href="/products">Clear</Link> : null}
         </form>
         {categories.length ? (
-          <div className="button-row" style={{ marginTop: 0, marginBottom: "1.5rem" }}>
-            <span className="eyebrow">Browse categories</span>
+          <div className="button-row category-chip-row">
+            <span className="eyebrow">Aisles</span>
             {categories.map((category) => (
               <Link className="button button-secondary" key={category.id} href={`/categories/${category.slug}`}>
                 {category.name}
@@ -55,11 +55,11 @@ export default async function ProductsPage({
           </div>
         ) : (
           <EmptyState
-            title={search ? "No matching products" : "The catalogue is empty"}
+            title={search ? "Nothing matched that search" : "No stock listed yet"}
             message={
               search
-                ? "Try a broader search term or browse a category."
-                : "Products added by an administrator will appear here."
+                ? "Try a shorter word, or open a category."
+                : "Items added in the admin dashboard will show here."
             }
           />
         )}

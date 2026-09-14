@@ -17,8 +17,8 @@ export default async function AdminLoginPage({
     <section className="auth-shell">
       <div className="auth-card">
         <p className="eyebrow">{BUSINESS_DEFAULTS.businessName}</p>
-        <h1>Admin sign in</h1>
-        <p>Manage the catalogue, categories, images, and business information.</p>
+        <h1>Staff sign in</h1>
+        <p>Update stock, prices, photos, and shop details.</p>
         <LoginForm message={message} />
       </div>
     </section>

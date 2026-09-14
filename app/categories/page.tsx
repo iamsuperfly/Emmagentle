@@ -10,22 +10,22 @@ export default async function CategoriesPage() {
     <section className="section">
       <div className="shell">
         <div className="page-heading">
-          <p className="eyebrow">Catalogue structure</p>
+          <p className="eyebrow">Browse by aisle</p>
           <h1>Categories</h1>
-          <p>Categories are managed from the admin dashboard and are never fixed in the frontend.</p>
+          <p>Open a group to see the stock currently listed under it.</p>
         </div>
         {categories.length ? (
           <div className="category-grid">
             {categories.map((category) => (
               <Link className="category-card" key={category.id} href={`/categories/${category.slug}`}>
-                <p className="eyebrow">{category.product_count ?? 0} products</p>
+                <p className="eyebrow">{category.product_count ?? 0} listed</p>
                 <h3>{category.name}</h3>
-                <p>{category.description || "Browse products in this category."}</p>
+                <p>{category.description || "Open this aisle."}</p>
               </Link>
             ))}
           </div>
         ) : (
-          <EmptyState title="No categories yet" message="An administrator can add the first category from the dashboard." />
+          <EmptyState title="No categories yet" message="Add the first aisle from the admin dashboard." />
         )}
       </div>
     </section>
