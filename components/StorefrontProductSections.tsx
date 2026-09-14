@@ -103,7 +103,7 @@ function ProductSection({
               onChange={handleAvailabilityChange}
             />
             <Link className="button button-secondary" href="/products">
-              {featured ? "See all products" : "View full catalogue"}
+              {featured ? "Full catalogue" : "Open catalogue"}
             </Link>
           </div>
         </div>
@@ -114,7 +114,7 @@ function ProductSection({
                 <div className="featured-product-group" key={category.id}>
                   <div className="category-row-heading">
                     <h3>{category.name}</h3>
-                    <Link href={`/categories/${category.slug}`}>View category →</Link>
+                    <Link href={`/categories/${category.slug}`}>Open aisle</Link>
                   </div>
                   <div className="featured-product-row" aria-label={`${category.name} featured products`}>
                     {groupProducts.map((product) => (
@@ -174,18 +174,18 @@ export function StorefrontProductSections({
     <>
       <ProductSection
         categories={categories}
-        eyebrow="Featured products"
+        eyebrow="On the counter"
         featured
         products={featuredProducts}
-        title="Featured Products"
+        title="Pinned stock"
         whatsappNumber={whatsappNumber}
       />
       <ProductSection
         categories={categories}
-        eyebrow="Browse the catalogue"
+        eyebrow="Full list"
         featured={false}
         products={allProducts}
-        title="All Products"
+        title="All listed items"
         whatsappNumber={whatsappNumber}
       />
     </>

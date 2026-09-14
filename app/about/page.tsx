@@ -12,25 +12,30 @@ export default async function AboutPage() {
       <div className="shell">
         <div className="page-heading">
           <p className="eyebrow">{BUSINESS_DEFAULTS.businessName}</p>
-          <h1>About & contact</h1>
-          <p>Find the current business information and get in touch about products, pricing, or availability.</p>
+          <h1>Shop details</h1>
+          <p>Hours, address, and WhatsApp for price checks and stock confirmation.</p>
           <Link className="button button-secondary" href="/">
-            ← Back to home
+            Back to stock
           </Link>
         </div>
         <div className="about-grid">
           <div className="panel about-panel" id="about">
-            <p className="eyebrow">What we do / what we sell</p>
-            <h2>Electrical & hardware supplies</h2>
-            <p>Electrical and hardware supplies for everyday projects and professional work.</p>
+            <p className="eyebrow">What we sell</p>
+            <h2>Electrical fittings, solar parts, and hardware</h2>
+            <p>
+              Stock for electricians, builders, and household jobs. Listings show what we currently
+              photograph and price. If an item is missing, ask — we can often source it.
+            </p>
           </div>
           <div className="panel about-panel" id="location">
-            <p className="eyebrow">Location</p>
+            <p className="eyebrow">Counter</p>
+            <h2>Find the shop</h2>
             <p>{settings.address}</p>
           </div>
           <div className="panel about-panel" id="contact">
-            <p className="eyebrow">Contact</p>
-            <p>WhatsApp: {settings.whatsapp_number}</p>
+            <p className="eyebrow">Talk to the shop</p>
+            <h2>WhatsApp first</h2>
+            <p>{settings.whatsapp_number}</p>
             {settings.phone_number ? <p>Phone: {settings.phone_number}</p> : null}
             <a
               className="button button-primary whatsapp-button"
@@ -39,11 +44,12 @@ export default async function AboutPage() {
               rel="noreferrer"
             >
               <WhatsAppIcon />
-              WhatsApp
+              Open WhatsApp
             </a>
           </div>
           <div className="panel about-panel" id="hours">
-            <p className="eyebrow">Business hours</p>
+            <p className="eyebrow">When we are open</p>
+            <h2>Business hours</h2>
             <p>{settings.opening_hours}</p>
           </div>
         </div>

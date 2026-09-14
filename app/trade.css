@@ -1,0 +1,313 @@
+/* Trade-counter overlay. Does not replace the original class names. */
+
+:root {
+  --charcoal: #151918;
+  --charcoal-soft: #222826;
+  --orange: #d85a12;
+  --orange-dark: #b4470c;
+  --cream: #eceee9;
+  --paper: #ffffff;
+  --line: #cfd3cc;
+  --muted: #545a56;
+  --success: #1b5c3b;
+  --danger: #9d3226;
+  --ink: #101413;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.45;
+}
+
+button,
+.button {
+  border-radius: 2px;
+  padding: 0.62rem 0.95rem;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+button:hover,
+.button:hover {
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  .button:hover {
+    filter: brightness(0.97);
+  }
+}
+
+.button-secondary {
+  color: var(--ink);
+  background: #e2e5e0;
+  border: 1px solid #c7ccc6;
+}
+
+.site-header {
+  border-bottom: 3px solid var(--orange);
+}
+
+.brand {
+  gap: 0.7rem;
+  min-width: 0;
+}
+
+.brand-text {
+  display: grid;
+  line-height: 1.05;
+}
+
+.brand-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.brand-tag {
+  color: #b8bfb8;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+}
+
+.main-nav {
+  gap: 1rem;
+  color: #d7ddd7;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.header-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--orange);
+  color: #fff;
+  background: var(--orange-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.header-whatsapp:hover,
+.header-whatsapp:focus-visible {
+  color: #fff;
+  background: var(--orange);
+}
+
+.site-footer {
+  margin-top: 3.5rem;
+  padding: 2.4rem 0;
+  border-top: 3px solid var(--orange);
+}
+
+.footer-whatsapp {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+
+.footer-whatsapp:hover,
+.footer-whatsapp:focus-visible {
+  color: var(--orange);
+}
+
+.hero {
+  padding: 3.25rem 0 3.5rem;
+  border-bottom: 1px solid #2a312e;
+}
+
+.hero h1 {
+  max-width: 18ch;
+  margin: 0.45rem 0 1rem;
+  font-size: clamp(1.85rem, 4.2vw, 3.05rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.hero p {
+  max-width: 58ch;
+  color: #c7cdc7;
+  font-size: 1.02rem;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.section-heading h2,
+.page-heading h1 {
+  margin: 0.28rem 0 0;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.availability-filter {
+  gap: 0;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.availability-filter button {
+  border-radius: 0;
+}
+
+.info-strip {
+  gap: 0;
+  margin-top: -1.1rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.info-strip > div {
+  padding: 0.95rem 1.1rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+}
+
+.info-strip > div:last-child {
+  border-right: 0;
+}
+
+.product-grid,
+.featured-product-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.product-image {
+  position: relative;
+  min-height: 168px;
+  padding: 0;
+  color: #6e746e;
+  background: #dfe3dc;
+}
+
+.product-image img {
+  height: 168px;
+}
+
+.product-card-body {
+  gap: 0.35rem;
+  padding: 0.75rem 0.8rem 0.85rem;
+}
+
+.product-card h3 {
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+.product-card .product-price {
+  font-size: 1.05rem;
+}
+
+.product-blurb {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.status {
+  border-radius: 0;
+  padding: 0.18rem 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-on-photo {
+  position: absolute;
+  left: 0.45rem;
+  bottom: 0.45rem;
+  box-shadow: 0 1px 2px rgb(16 20 19 / 18%);
+}
+
+.category-grid {
+  gap: 0.75rem;
+}
+
+.category-card {
+  padding: 1rem 1.05rem;
+  border-left: 3px solid var(--orange);
+}
+
+.search-bar {
+  margin: 1rem 0 1.25rem;
+}
+
+.category-chip-row {
+  margin-top: 0;
+  margin-bottom: 1.35rem;
+}
+
+input,
+select,
+textarea {
+  border-color: #b9beb8;
+  border-radius: 2px;
+}
+
+.detail-copy h1 {
+  margin: 0.35rem 0 0.85rem;
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.auth-card {
+  padding: 1.6rem 1.5rem;
+  border-top: 3px solid var(--orange);
+  border-radius: 0;
+}
+
+@media (max-width: 1100px) {
+  .product-grid,
+  .featured-product-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .brand-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .info-strip > div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 560px) {
+  .hero h1 {
+    font-size: clamp(1.7rem, 8vw, 2.35rem);
+    line-height: 1.12;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
